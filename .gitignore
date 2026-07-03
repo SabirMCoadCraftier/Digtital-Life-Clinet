@@ -24,4 +24,5 @@ auth.db
 *.njsproj
 *.sln
 *.sw?
+.env
 .vercel
