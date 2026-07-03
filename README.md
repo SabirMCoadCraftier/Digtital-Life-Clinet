@@ -1,3 +1,102 @@
+# Digital Life Lessons
+
+A full-featured online learning platform where users can explore, save, and manage life-skill lessons, while admins can manage users, lessons, and reported content from a dedicated dashboard.
+
+
+
+## ✨ Features
+
+- 🔍 Browse and search public lessons with category, tone, and sorting filters
+- ❤️ Save lessons to favorites for premium/registered users
+- 📊 Role-based dashboard for **Users** and **Admins**
+- 📝 Add, update, and manage lessons
+- 👥 Admin panel to manage users and reported lessons
+- 💳 Payment system for premium access (with success/cancel flow)
+- 🔐 Firebase authentication with protected & admin-only routes
+- 🌟 Most saved lessons, top contributors, and featured lessons sections
+- 📰 Newsletter subscription and testimonials section
+- ❓ FAQ, About, Contact, and Privacy Policy pages
+- 🚫 Custom 403 (Forbidden) and 404 (Error) pages
+- 🎨 Smooth animations using Framer Motion
+
+## 🛠️ Tech Stack
+
+**Client:**
+- React (Vite)
+- React Router
+- TanStack Query (React Query)
+- Axios (Secure instance with interceptors)
+- Firebase Authentication
+- Tailwind CSS
+- Framer Motion
+- React Icons
+
+## 📁 Project Structure
+
+```
+src/
+├── Component/        # Reusable UI sections (Hero, About, FAQ, Blog, etc.)
+├── Context/           # Auth context
+├── Firebase/          # Firebase config
+├── Hooks/             # Custom hooks (useAuth, useRole, useAxiosSecure)
+├── Layout/             # Root and Dashboard layouts
+├── Pages/
+│   ├── Auth/           # Login / Register
+│   ├── Dashboard/      # User & Admin dashboard pages
+│   ├── PuplicLessons/  # Public lessons listing
+│   └── Profile/        # User profile
+├── Navbar/
+├── Footer/
+└── AdminRoute.jsx      # Protected admin route
+```
+
+## ⚙️ Getting Started
+
+### Prerequisites
+- Node.js installed
+- A Firebase project (for authentication)
+
+### Installation
+
+```bash
+git clone https://github.com/SabirMCoadCraftier/Digtital-Life-Clinet.git
+cd digital-life-lessions-client
+npm install
+```
+
+### Environment Variables
+
+Create a `.env.local` file in the root directory and add your Firebase config:
+
+```
+VITE_apiKey=your_api_key
+VITE_authDomain=your_auth_domain
+VITE_projectId=your_project_id
+VITE_storageBucket=your_storage_bucket
+VITE_messagingSenderId=your_sender_id
+VITE_appId=your_app_id
+```
+
+### Run the project
+
+```bash
+npm run dev
+```
+
+## 🔑 User Roles
+
+| Role  | Access                                                                 |
+|-------|-------------------------------------------------------------------------|
+| User  | Browse lessons, save favorites, add/manage own lessons, premium payment |
+| Admin | Manage all users, manage all lessons, handle reported lessons           |
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome. Feel free to open a pull request.
+
+## 📄 License
+
+This project is licensed under the MIT License.
 # Project Name
 
 ---Digital-life-lessons
