@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+"use client";
+
+import { useState } from "react";
 import {
   FaHeart,
   FaRegHeart,
@@ -8,19 +10,21 @@ import {
   FaShareAlt,
 } from "react-icons/fa";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Link, useNavigate, useParams } from "react-router";
+import Link from "next/link";
+import { useRouter, useParams } from "next/navigation";
 import { toast } from "react-toastify";
 
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
-import useAuth from "../../Hooks/useAuth";
+import useAxiosSecure from "@/Hooks/useAxiosSecure";
+import useAuth from "@/Hooks/useAuth";
 import LoadingSpinner from "../LoadingSpenner/LoadingSpenner";
-import useRole from "../../Hooks/useRole";
+import useRole from "@/Hooks/useRole";
 
 export default function LessonDetails() {
-  const { id } = useParams();
+  const params = useParams();
+  const id = params.id;
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const navigate = useNavigate();
+  const router = useRouter();
   const queryClient = useQueryClient();
   const [commentText, setCommentText] = useState("");
   const { role } = useRole();
@@ -75,7 +79,7 @@ export default function LessonDetails() {
   const handleLike = async () => {
     if (!user) {
       toast.info("Please log in to like");
-      return navigate("/login");
+      return router.push("/login");
     }
     try {
       await axiosSecure.patch(`/lessons/${lesson._id}/like`, {
@@ -92,7 +96,7 @@ export default function LessonDetails() {
   const handleSave = async () => {
     if (!user) {
       toast.info("Please log in to save lessons");
-      return navigate("/login");
+      return router.push("/login");
     }
     try {
       const res = await axiosSecure.post("/favorites", {
@@ -152,7 +156,7 @@ export default function LessonDetails() {
   const handleReport = async () => {
     if (!user) {
       toast.info("Please log in to report");
-      return navigate("/login");
+      return router.push("/login");
     }
     const reasonNumber = prompt(
       "Report Reason:\n1. Inappropriate Content\n2. Hate Speech or Harassment\n3. Misleading or False Info\n4. Spam or Promotional Content\n5. Sensitive or Disturbing Content\n6. Other"
@@ -274,8 +278,8 @@ export default function LessonDetails() {
               </p>
               {role && (
                 <Link
-                  to={
-                    role === "admin" ? "/dashboard/admin-profile" : "/profile"
+                  href={
+                    role === "admin" ? "/dashboard/admin" : "/dashboard/profile"
                   }
                   className="text-indigo-600 dark:text-indigo-400 text-sm hover:underline mt-1"
                 >

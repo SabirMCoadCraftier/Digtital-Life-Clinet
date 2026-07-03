@@ -195,8 +195,10 @@
 //   );
 // }
 
+"use client";
+
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useAxiosSecure from "@/Hooks/useAxiosSecure";
 import LoadingSpinner from "../LoadingSpenner/LoadingSpenner";
 import { motion } from "framer-motion";
 import { FaHeart } from "react-icons/fa";

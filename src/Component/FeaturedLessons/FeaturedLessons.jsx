@@ -301,13 +301,15 @@
 
 // export default FeaturedLessons;
 
-import { Link } from "react-router";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
+"use client";
+
+import Link from "next/link";
+import useAxiosSecure from "@/Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import LoadingSpinner from "../../Component/LoadingSpenner/LoadingSpenner";
+import LoadingSpinner from "@/Component/LoadingSpenner/LoadingSpenner";
 import { AiFillStar, AiFillLock } from "react-icons/ai";
 import { motion } from "framer-motion";
-import useRole from "../../Hooks/useRole";
+import useRole from "@/Hooks/useRole";
 
 const FeaturedLessons = () => {
   const axiosSecure = useAxiosSecure();
@@ -458,7 +460,7 @@ const FeaturedLessons = () => {
                     {/* Conditional Link Rendering */}
                     {!isLocked ? (
                       <Link
-                        to={`/lesson/${lesson._id}`}
+                        href={`/lessons/${lesson._id}`}
                         className="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 underline underline-offset-4 transition-all"
                       >
                         Read Story

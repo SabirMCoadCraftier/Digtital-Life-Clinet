@@ -1,5 +1,6 @@
-import React from "react";
-import { Link } from "react-router";
+"use client";
+
+import Link from "next/link";
 
 export default function ErrorPage() {
   return (
@@ -14,7 +15,7 @@ export default function ErrorPage() {
       </p>
 
       <Link
-        to="/"
+        href="/"
         className="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition"
       >
         Go Back Home

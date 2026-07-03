@@ -78,7 +78,7 @@
 //       toast.success("Lesson updated successfully!");
 //       // Refresh lesson data
 //       queryClient.invalidateQueries(["lesson", id]);
-//       navigate("/public-lessons");
+//       router.push("/public-lessons");
 //     } catch (err) {
 //       console.error(err);
 //       toast.error("Update failed!");
@@ -205,21 +205,24 @@
 //   );
 // }
 
+"use client";
+
 import { useForm } from "react-hook-form";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
-import { useParams, useNavigate } from "react-router";
+import useAxiosSecure from "@/Hooks/useAxiosSecure";
+import { useParams, useRouter } from "next/navigation";
 import LoadingSpinner from "../LoadingSpenner/LoadingSpenner";
 import { useEffect } from "react";
-import { imageUpload } from "../../Utils";
-import useRole from "../../Hooks/useRole";
+import { imageUpload } from "@/Utils";
+import useRole from "@/Hooks/useRole";
 import { toast } from "react-toastify";
 
 export default function UpdateLesson({ isPremiumUser }) {
-  const { id } = useParams();
+  const params = useParams();
+  const id = params.id;
   const axiosSecure = useAxiosSecure();
   const queryClient = useQueryClient();
-  const navigate = useNavigate();
+  const router = useRouter();
   const { isPremium } = useRole();
 
   /* ================= Fetch lesson ================= */
@@ -282,7 +285,7 @@ export default function UpdateLesson({ isPremiumUser }) {
 
       toast.success("Lesson updated successfully!");
       queryClient.invalidateQueries(["lesson", id]);
-      navigate("/public-lessons");
+      router.push("/public-lessons");
     } catch {
       toast.error("Update failed!");
     }

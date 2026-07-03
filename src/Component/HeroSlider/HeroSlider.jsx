@@ -88,8 +88,10 @@
 
 // export default HeroSlider;
 
+"use client";
+
 import { useState, useEffect } from "react";
-import { Link } from "react-router";
+import Link from "next/link";
 
 const slides = [
   {
@@ -150,13 +152,13 @@ const HeroSlider = () => {
 
               <div className="mt-10 flex justify-center gap-4">
                 <Link
-                  to={"/public-lessons"}
+                  href={"/public-lessons"}
                   className="px-8 py-3 rounded-md bg-white text-black font-semibold hover:bg-gray-200 transition"
                 >
                   Explore Life Lessons
                 </Link>
                 <Link
-                  to={"/dashboard/add-lesson"}
+                  href={"/dashboard/add-lesson"}
                   className="px-8 py-3 rounded-md border border-white text-white hover:bg-white hover:text-black transition"
                 >
                   Share Your Lesson

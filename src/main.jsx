@@ -12,7 +12,7 @@ const queryClient = new QueryClient(); // <-- MUST CREATE INSTANCE
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <ThemeProvider attribute="class" defaultTheme="light">
+    <ThemeProvider attribute="class" defaultTheme="dark">
       <AuthProvider>
         <QueryClientProvider client={queryClient}>
           <RouterProvider router={router}></RouterProvider>
